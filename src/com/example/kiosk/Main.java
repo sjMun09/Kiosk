@@ -1,5 +1,7 @@
 package com.example.kiosk;
 
+import com.example.kiosk.controller.Kiosk;
+
 import java.io.*;
 
 public class Main {
