@@ -43,4 +43,13 @@ public class Menu {
     public int getMenuSize() {
         return items.size();
     }
+
+    public List<MenuItem> getItems() {
+        return items;
+    }
+
+    public void setItems(List<MenuItem> items) {
+        this.items = items;
+    }
+
 }
