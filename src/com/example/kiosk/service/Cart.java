@@ -1,4 +1,7 @@
-package com.example.kiosk;
+package com.example.kiosk.service;
+
+import com.example.kiosk.dto.CartStatus;
+import com.example.kiosk.dto.MenuItem;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.kiosk;
+package com.example.kiosk.dto;
 
 public enum Discount {
     VETERAN(0.10), SOLDIER(0.05), STUDENT(0.03), REGULAR(0.0);

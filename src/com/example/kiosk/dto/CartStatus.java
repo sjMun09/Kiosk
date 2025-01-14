@@ -1,4 +1,4 @@
-package com.example.kiosk;
+package com.example.kiosk.dto;
 
 /**
  * cart 상태 구현

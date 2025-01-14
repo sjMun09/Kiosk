@@ -1,4 +1,4 @@
-package com.example.kiosk;
+package com.example.kiosk.dto;
 
 /**
  * 세부 메뉴 속성
