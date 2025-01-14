@@ -22,6 +22,22 @@ public class MenuItem {
         return price;
     }
 
+    public String getIntro() {
+        return intro;
+    }
+
+    public void setBurger(String burger) {
+        this.burger = burger;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setIntro(String intro) {
+        this.intro = intro;
+    }
+
     @Override
     public String toString() {
         return burger + "\t| W " + price + " |" + intro;
