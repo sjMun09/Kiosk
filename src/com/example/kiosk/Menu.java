@@ -33,7 +33,7 @@ public class Menu {
         for (int i = 0; i < items.size(); i++) {
             System.out.println(i + 1 + ". " + items.get(i));
         }
-        System.out.println("0. 종료 | 종료");
+        System.out.println("0. 뒤로가기");
     }
 
     public MenuItem getMenuItem(int index) {
