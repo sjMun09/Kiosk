@@ -5,9 +5,10 @@ import com.example.kiosk.dto.MenuItem;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
-public class Cart {
-    private List<MenuItem> items;
+public class Cart<T> {
+    private List<T> items;
     private CartStatus cartStatus;
 
     private void updateCartStatus() {
@@ -21,9 +22,20 @@ public class Cart {
         updateCartStatus();
     }
 
-    public void addItem(MenuItem item) {
+    /*public void addItem(MenuItem item) {
         items.add(item);
         updateCartStatus();
+    }*/
+    public void addItem(T item) {
+        items.add(item);
+        updateCartStatus();
+    }
+
+    //추가
+    public void removeItemByCondition(String name) {
+        items = items.stream()
+                .filter(item -> !(item instanceof MenuItem) || !((MenuItem) item).getBurger().equals(name))
+                .collect(Collectors.toList());
     }
 
     public void displayCart() {
@@ -31,14 +43,23 @@ public class Cart {
             System.out.println("장바구니가 비어 있습니다.");
             return;
         }
-        for (MenuItem item : items) {
+        /*for (MenuItem item : items) {
             System.out.println(item);
-        }
+        }*/
+        items.forEach(System.out::println);
     }
 
     public double getTotalPrice() {
-        return items.stream().mapToDouble(MenuItem::getPrice).sum();
+        return items.stream()
+                .filter(item -> item instanceof MenuItem)
+                .mapToDouble(item -> ((MenuItem) item).getPrice())
+                .sum();
     }
+
+   /* public double getTotalPrice() {
+        return items.stream().mapToDouble(MenuItem::getPrice).sum();
+    }*/
+
 
     public void clear() {
         items.clear(); // 비워주고
@@ -51,6 +72,11 @@ public class Cart {
 
     public CartStatus getCartStatus() {
         return cartStatus;
+    }
+
+    //add
+    public List<T> getItems() {
+        return new ArrayList<>(items); // 방어적 복사 -> 공부
     }
 
 }

@@ -15,12 +15,13 @@ import java.io.InputStreamReader;
 public class Kiosk {
     private Menu menu;
     private BufferedReader br;
-    private Cart cart;
+    //private Cart cart;
+    private Cart<MenuItem> cart; // 제네릭 타입 명시 해줌
 
     public Kiosk() {
         this.menu = new Menu();
         this.br = new BufferedReader(new InputStreamReader(System.in));
-        this.cart = new Cart();
+        this.cart = new Cart(); // // 제네릭 타입은 컴파일러가 추적 가능하다.
     }
 
     private void displayMainMenu() {
@@ -129,7 +130,7 @@ public class Kiosk {
         System.out.println("아래와 같이 주문 하시겟습니까?\n");
 
         System.out.println("[ Orders ]");
-        cart.displayCart();
+        cart.displayCart(); // 제네릭 타입을 유지하게 됌
         System.out.println(" ");
         System.out.println("[ Total ]\nW " + cart.getTotalPrice() + "\n");
         System.out.print("1. 주문  \t  2. 메뉴판 \n");
