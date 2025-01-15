@@ -151,10 +151,10 @@ public class Kiosk {
 
     private void applyDiscount() throws IOException {
         System.out.println("[ 할인 정보 ]");
-        System.out.println("1. 국가유공자 : 10%");
-        System.out.println("2. 군인     : 5%");
-        System.out.println("3. 학생     : 3%");
-        System.out.println("4. 일반     : 0%");
+        for (Discount discount : Discount.values()) {
+            System.out.println((discount.ordinal() + 1) + ". " + discount);
+        }
+
         System.out.print("할인 정보를 입력해주세요: ");
         int discountChoice;
 
@@ -165,14 +165,16 @@ public class Kiosk {
             return;
         }
 
-        double discountRate = Discount.getDiscountRate(discountChoice);
+        Discount userType = Discount.fromChoice(discountChoice);
         double totalPrice = cart.getTotalPrice();
-        double discountedPrice = totalPrice * (1 - discountRate);
+        double discountedPrice = totalPrice * (1 - userType.getDiscountRate());
 
+        System.out.printf("사용자 유형: %s\n", userType.getDescription());
         System.out.printf("할인 적용 후 금액은 W %.2f 입니다.\n", discountedPrice);
         cart.clear();
         System.out.println("주문이 완료되었습니다. 감사합니다!\n");
     }
+
 
 //    private void initializeMenu() {
 //        menu.outMenu();
