@@ -44,7 +44,7 @@ public class Menu {
         for (int i = 0; i < items.size(); i++) {
             System.out.println(i + 1 + ". " + items.get(i));
         }
-        System.out.println("0. 뒤로가기");
+        System.out.println("0. 뒤로가기 | 종료하기");
     }
 
     public MenuItem getMenuItem(int index) {
