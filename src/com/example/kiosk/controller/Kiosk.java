@@ -15,8 +15,8 @@ import java.io.InputStreamReader;
 public class Kiosk {
     private Menu menu;
     private BufferedReader br;
-    //private Cart cart;
-    private Cart<MenuItem> cart; // 제네릭 타입 명시 해줌
+    private Cart cart;
+    // private Cart<MenuItem> cart; // 제네릭 타입 명시 해줌
 
     public Kiosk() {
         this.menu = new Menu();
@@ -26,10 +26,11 @@ public class Kiosk {
 
     private void displayMainMenu() {
         System.out.println("[ MAIN MENU ]");
-        System.out.println("1. Burgers");
-        System.out.println("2. Drinks");
-        System.out.println("3. Desserts");
-        System.out.println("0. 종료      | 종료");
+//        System.out.println("1. Burgers");
+//        System.out.println("2. Drinks");
+//        System.out.println("3. Desserts");
+//        System.out.println("0. 종료      | 종료");
+        menu.outMenu();
         if (!cart.isEmpty()) {
             System.out.println("\n[ ORDER MENU ]");
             System.out.println("4. Orders       | 장바구니를 확인 후 주문합니다.");
@@ -59,20 +60,20 @@ public class Kiosk {
         MenuItem selectItem = menu.getMenuItem(choice - 1);
 
         System.out.println("선택한 메뉴: " + selectItem);
-        System.out.print("위 메뉴를 장바구니에 추가하시겠습니까? \n1. 확인 \t  2. 취소 \n");
+        System.out.print("몇 개를 장바구니에 추가하시겠습니까? : ");
         System.out.println(" ");
-
-        int filter;
+        int quantity;
 
         try {
-            filter = Integer.parseInt(br.readLine());
+            quantity = Integer.parseInt(br.readLine());
         } catch (NumberFormatException e) {
             System.out.println("잘못된 입력입니다.");
             return;
         }
 
-        if (filter == 1) {
-            cart.addItem(selectItem); // Cart 수정 후, 동일 메뉴가 추가 시엔 수량이 증가한다.
+        if (quantity >= 1) {
+            //cart.addItem(selectItem); // Cart 수정 후, 동일 메뉴가 추가 시엔 수량이 증가한다.
+            cart.addItem(selectItem, quantity);
             System.out.println(selectItem.getBurger() + "이 장바구니에 추가되었습니다");
             System.out.println("아래 메뉴판을 보시고 메뉴를 골라 입력해주세요.");
         } else System.out.println("장바구니 추가가 취소되었습니다.\n");

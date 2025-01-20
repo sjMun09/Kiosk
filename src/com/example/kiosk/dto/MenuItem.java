@@ -1,7 +1,7 @@
 package com.example.kiosk.dto;
 
 /**
- * 세부 메뉴 속성
+ * 세부 메뉴 속성 -> 마트에 있는 "선반" 느낌
  */
 public class MenuItem {
     private String burger;
