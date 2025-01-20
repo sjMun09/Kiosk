@@ -72,7 +72,7 @@ public class Kiosk {
         }
 
         if (filter == 1) {
-            cart.addItem(selectItem);
+            cart.addItem(selectItem); // Cart 수정 후, 동일 메뉴가 추가 시엔 수량이 증가한다.
             System.out.println(selectItem.getBurger() + "이 장바구니에 추가되었습니다");
             System.out.println("아래 메뉴판을 보시고 메뉴를 골라 입력해주세요.");
         } else System.out.println("장바구니 추가가 취소되었습니다.\n");
